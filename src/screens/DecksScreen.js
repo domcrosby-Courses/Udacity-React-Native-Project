@@ -9,20 +9,14 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { DeckList } from '../Containers';
 
 export default function DecksScreen() {
+  console.log();
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}></View>
-
-        <View style={styles.getStartedContainer}>
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
-          </Text>
-        </View>
+      <ScrollView style={styles.container}>
+        <DeckList />
       </ScrollView>
     </View>
   );

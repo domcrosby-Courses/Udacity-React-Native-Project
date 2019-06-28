@@ -1,19 +1,18 @@
-import React from 'react';
-import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import DecksScreen from '../screens/DecksScreen';
-import { TabBarIcon } from '../Components';
+import DeckScreen from '../screens/DeckScreen';
+import QuizScreen from '../screens/QuizScreen';
 
 const DecksStack = createStackNavigator({
-  Home: DecksScreen
+  decksScreen: {
+    screen: DecksScreen
+  },
+  deckScreen: {
+    screen: DeckScreen
+  },
+  quizScreen: {
+    screen: QuizScreen
+  }
 });
-
-DecksStack.navigationOptions = {
-  tabBarLabel: 'Decks',
-  // eslint-disable-next-line react/prop-types
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? `ios-apps` : 'md-apps'} />
-  )
-};
 
 export default DecksStack;

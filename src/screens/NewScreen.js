@@ -1,9 +1,13 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import { NewDeck } from '../Containers';
 
 export default function NewScreen() {
-  return <ScrollView style={styles.container}></ScrollView>;
+  return (
+    <ScrollView style={styles.container}>
+      <NewDeck />
+    </ScrollView>
+  );
 }
 
 NewScreen.navigationOptions = {
