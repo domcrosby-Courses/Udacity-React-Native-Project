@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from 'react-navigation';
 import { TabBarIcon } from '../Components';
 
 import DecksStack from './DecksStack';
-import NewStack from './NewStack';
+import NewDeckStack from './NewDeckStack';
 
 export default createBottomTabNavigator({
   TabOne: {
@@ -24,7 +24,7 @@ export default createBottomTabNavigator({
     })
   },
   TabTwo: {
-    screen: NewStack,
+    screen: NewDeckStack,
     navigationOptions: ({ navigation }) => ({
       tabBarLabel: 'Add New',
       tabBarIcon: ({ focused }) => {

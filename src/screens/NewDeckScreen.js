@@ -1,15 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Input, Button } from '../Components';
 import { addDeck } from '../ducks/decks';
 
-// const propTypes = {};
-
-// const defaultProps = {};
-
-class NewDeck extends Component {
+class NewDeckScreen extends Component {
   state = {
     title: '',
     disabled: true
@@ -24,29 +20,45 @@ class NewDeck extends Component {
 
   onPress = () => {
     const { title } = this.state;
-    const { actionAddDeck } = this.props;
-    actionAddDeck(title);
-    // navigation.navigate('QuizOverview');
+    const { actionAddDeck, navigation } = this.props;
+    actionAddDeck({ title });
+    this.setState({ title: '', disabled: true });
+    navigation.navigate('deckScreen', {
+      title
+    });
     // this.props.navigation.navigate('QuizOverview', { title });
   };
 
   render() {
-    const { disabled } = this.state;
+    const { disabled, title } = this.state;
     return (
-      <View>
+      <ScrollView style={styles.container}>
         <Input
           fieldLabel="Deck Title"
           maxLength={50}
           placeholder="Enter Deck Title"
+          value={title}
           onChangeText={deckName => this.onChange(deckName)}
         />
         <Button onPress={() => this.onPress()} disabled={disabled}>
           Add Deck
         </Button>
-      </View>
+      </ScrollView>
     );
   }
 }
+
+NewDeckScreen.navigationOptions = {
+  title: 'Links'
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 15,
+    backgroundColor: '#fff'
+  }
+});
 
 const mapStateToProps = state => {
   const { decks } = state;
@@ -58,7 +70,11 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { actionAddDeck: addDeck }
-)(NewDeck);
+)(NewDeckScreen);
+
+// const propTypes = {};
+
+// const defaultProps = {};
 
 // NewDeck.propTypes = propTypes;
 // NewDeck.defaultProps = defaultProps;

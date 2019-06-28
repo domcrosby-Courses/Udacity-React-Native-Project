@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
+import { TouchableOpacity } from 'react-native';
 // Theoretically you would want to actually pass down
 import { withNavigation } from 'react-navigation';
+import DeckStats from './DeckStats';
 
 const propTypes = {};
 
@@ -11,42 +13,24 @@ const defaultProps = {};
 class DeckInfo extends Component {
   onPress = () => {
     const { deck, navigation } = this.props;
+    const { title } = deck;
     navigation.navigate('deckScreen', {
-      deck
+      title
     });
   };
 
   render() {
-    const { containerStyle, textStyle, bigTextStyle } = styles;
+    const { containerStyle } = styles;
     const { deck } = this.props;
     return (
       <TouchableOpacity style={containerStyle} onPress={() => this.onPress()}>
-        <Text style={bigTextStyle}>{deck.title}</Text>
-        <Text style={textStyle}>
-          {`${deck.quizLength} Card${deck.quizLength === 1 ? '' : 's'}`}
-        </Text>
+        <DeckStats id={deck.title} />
       </TouchableOpacity>
     );
   }
 }
 
 const styles = {
-  bigTextStyle: {
-    alignSelf: 'center',
-    color: '#000',
-    fontSize: 32,
-    fontWeight: '600',
-    paddingTop: 10,
-    paddingBottom: 10
-  },
-  textStyle: {
-    alignSelf: 'center',
-    color: '#222',
-    fontSize: 16,
-    fontWeight: '600',
-    paddingTop: 10,
-    paddingBottom: 10
-  },
   containerStyle: {
     borderWidth: 1,
     borderRadius: 2,
@@ -61,7 +45,20 @@ const styles = {
     marginTop: 10
   }
 };
-export default withNavigation(DeckInfo);
+
+const mapStateToProps = (state, ownProps) => {
+  const { decks } = state;
+  const { id } = ownProps;
+  const deck = decks[id];
+  return {
+    deck
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(withNavigation(DeckInfo));
 
 DeckInfo.propTypes = propTypes;
 DeckInfo.defaultProps = defaultProps;
