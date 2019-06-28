@@ -1,9 +1,8 @@
+/* eslint-disable react/prefer-stateless-function */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { addDeck } from '../ducks/decks';
 import { Button } from '../Components';
 
 const propTypes = {};

@@ -43,7 +43,7 @@ class Button extends Component {
   }
 
   render() {
-    const { onPress, disabled, children, filled } = this.props;
+    const { onPress, disabled, children } = this.props;
     return (
       <TouchableOpacity onPress={onPress} style={this.buttonStyle()} disabled={disabled}>
         <Text style={this.textStyle()}>{children}</Text>

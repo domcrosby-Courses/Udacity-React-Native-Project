@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Input, Button } from '../Components';
 import { addDeck } from '../ducks/decks';
 
@@ -25,17 +25,13 @@ class NewDeck extends Component {
   onPress = () => {
     const { title } = this.state;
     const { actionAddDeck } = this.props;
-    console.log('pressed');
     actionAddDeck(title);
     // navigation.navigate('QuizOverview');
     // this.props.navigation.navigate('QuizOverview', { title });
   };
 
   render() {
-    console.log('rendering');
-    console.log(this.props);
-    const { title, disabled } = this.state;
-    const { decks } = this.props;
+    const { disabled } = this.state;
     return (
       <View>
         <Input

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import PropTypes from 'prop-types';
 // Theoretically you would want to actually pass down
 import { withNavigation } from 'react-navigation';
 
@@ -9,11 +8,10 @@ const propTypes = {};
 
 const defaultProps = {};
 
-class Deck extends Component {
+class DeckInfo extends Component {
   onPress = () => {
-    const { deck } = this.props;
-    console.log(this.props.navigation);
-    this.props.navigation.navigate('deckScreen', {
+    const { deck, navigation } = this.props;
+    navigation.navigate('deckScreen', {
       deck
     });
   };
@@ -63,7 +61,7 @@ const styles = {
     marginTop: 10
   }
 };
-export default withNavigation(Deck);
+export default withNavigation(DeckInfo);
 
-Deck.propTypes = propTypes;
-Deck.defaultProps = defaultProps;
+DeckInfo.propTypes = propTypes;
+DeckInfo.defaultProps = defaultProps;

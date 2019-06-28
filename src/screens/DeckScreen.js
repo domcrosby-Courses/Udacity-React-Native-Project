@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';

@@ -1,18 +1,8 @@
-import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { DeckList } from '../Containers';
 
 export default function DecksScreen() {
-  console.log();
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container}>

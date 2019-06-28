@@ -1,7 +1,7 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { Deck } from '../Containers';
 
 class QuizScreen extends Component {
   render() {
