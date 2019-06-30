@@ -49,7 +49,7 @@ class NewDeckScreen extends Component {
 }
 
 NewDeckScreen.navigationOptions = {
-  title: 'Links'
+  title: 'Add Deck'
 };
 
 const styles = StyleSheet.create({

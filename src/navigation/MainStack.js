@@ -1,12 +1,12 @@
 import { createStackNavigator } from 'react-navigation';
-import DecksScreen from '../screens/DecksScreen';
+import TabNavigator from './TabNavigator';
 import DeckScreen from '../screens/DeckScreen';
 import QuizScreen from '../screens/QuizScreen';
 import NewCardScreen from '../screens/NewCardScreen';
 
-const DecksStack = createStackNavigator({
+const MainStack = createStackNavigator({
   decksScreen: {
-    screen: DecksScreen
+    screen: TabNavigator
   },
   deckScreen: {
     screen: DeckScreen
@@ -19,4 +19,4 @@ const DecksStack = createStackNavigator({
   }
 });
 
-export default DecksStack;
+export default MainStack;

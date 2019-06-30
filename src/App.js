@@ -7,9 +7,14 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './Reducers';
 import AppNavigator from './navigation/AppNavigator';
+import { setLocalNotification } from './utils/helpers';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class AppContainer extends Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (

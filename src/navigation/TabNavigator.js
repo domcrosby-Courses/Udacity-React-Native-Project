@@ -4,12 +4,12 @@ import { Platform } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import { TabBarIcon } from '../Components';
 
-import DecksStack from './DecksStack';
-import NewDeckStack from './NewDeckStack';
+import NewDeckScreen from '../screens/NewDeckScreen';
+import DecksScreen from '../screens/DecksScreen';
 
-export default createBottomTabNavigator({
-  TabOne: {
-    screen: DecksStack,
+const TabNavigator = createBottomTabNavigator({
+  'Your Deck': {
+    screen: DecksScreen,
     navigationOptions: ({ navigation }) => ({
       tabBarLabel: 'Decks',
       tabBarIcon: ({ focused }) => {
@@ -23,8 +23,8 @@ export default createBottomTabNavigator({
       }
     })
   },
-  TabTwo: {
-    screen: NewDeckStack,
+  'Add Deck': {
+    screen: NewDeckScreen,
     navigationOptions: ({ navigation }) => ({
       tabBarLabel: 'Add New',
       tabBarIcon: ({ focused }) => {
@@ -40,3 +40,16 @@ export default createBottomTabNavigator({
     })
   }
 });
+
+TabNavigator.navigationOptions = ({ navigation }) => {
+  const { routeName } = navigation.state.routes[navigation.state.index];
+
+  // You can do whatever you like here to pick the title based on the route name
+  const headerTitle = routeName;
+
+  return {
+    headerTitle
+  };
+};
+
+export default TabNavigator;

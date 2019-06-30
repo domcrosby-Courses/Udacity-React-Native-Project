@@ -17,7 +17,7 @@ const defaultProps = {
 class Button extends Component {
   buttonStyle() {
     const { disabled, filled } = this.props;
-    const colr = disabled ? '#111' : '#007aff';
+    const colr = disabled ? '#aaa' : '#007aff';
     return {
       flex: 1,
       alignSelf: 'stretch',
@@ -31,7 +31,7 @@ class Button extends Component {
 
   textStyle() {
     const { disabled, filled } = this.props;
-    const colr = disabled ? '#111' : '#007aff';
+    const colr = disabled ? '#aaa' : '#007aff';
     return {
       alignSelf: 'center',
       color: filled ? '#fff' : colr,

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from '../Components';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class QuizScreen extends Component {
   state = {
@@ -11,6 +12,16 @@ class QuizScreen extends Component {
     answer: false,
     correct: 0
   };
+
+  onPress(tick = false) {
+    const { deck } = this.props;
+    const { qNo, correct } = this.state;
+    const { questions } = deck;
+    const qLength = questions.length;
+    this.setState({ qNo: qNo + 1, answer: false });
+    tick && this.setState({ correct: correct + 1 });
+    qNo === qLength && clearLocalNotification().then(setLocalNotification);
+  }
 
   render() {
     const { deck, navigation } = this.props;
@@ -53,17 +64,10 @@ class QuizScreen extends Component {
             {answer && (
               <View>
                 <Text style={styles.bigTextStyle}>{questions[qNo].answer}</Text>
-                <Button
-                  filled
-                  onPress={() =>
-                    this.setState({ qNo: qNo + 1, answer: false, correct: correct + 1 })
-                  }
-                >
+                <Button filled onPress={() => this.onPress(true)}>
                   Correct
                 </Button>
-                <Button onPress={() => this.setState({ qNo: qNo + 1, answer: false })}>
-                  InCorrect
-                </Button>
+                <Button onPress={() => this.onPress()}> InCorrect</Button>
               </View>
             )}
           </View>
